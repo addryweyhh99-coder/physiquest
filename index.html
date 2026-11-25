@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <!-- PhysiQuest VS Code project: version 29, Gerakan Linear 2.1 -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>PhysiQuest — Kebangkitan Teras</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath fill=%27%2389e8c0%27 d=%27M16 1 28 16 16 31 4 16Z%27/%3E%3C/svg%3E"><!-- VT323 font, SIL Open Font License 1.1. Copyright 2011, The VT323 Project Authors (peter.hull@oikoi.com)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+
+—————————————————————————————-
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+—————————————————————————————-
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting — in part or in whole — any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+ -->
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="styles/game.css?v=dialogue-reactions">
+  <link rel="stylesheet" href="styles/ion-cutscenes.css?v=ion-cutscenes-v1">
+  <link rel="stylesheet" href="src/graph-animations/graph-animations.css?v=quiz-pixel-frame">
+</head>
+<body>
+<div id="gameWrap">
+  <canvas id="gameCanvas"></canvas>
+  <div id="hud"><div class="hudPanel"><div class="hudTop"><div><div class="title" id="levelText">Aqil</div><div class="small" id="statsText">HP 100/100</div></div><div class="hudRight"><div class="small" id="waveText">Aras 1</div><div class="small pqCoinHud" id="pqCoins">◇ 0</div></div></div><div class="bar hpBar"><div class="fill" id="hpFill"></div></div><div id="pqShieldStatus" hidden></div><div class="bar stageBar"><div class="fill" id="stageFill"></div></div><div id="objectiveMini"></div><div id="pq10Next"></div></div><button id="menuBtn" aria-label="Open game information">☰</button>
+    <aside id="pqObjectivePanel" hidden aria-label="Misi semasa">
+      <div class="pqObjectiveHeading"><span>MISI SEMASA</span><button id="pqObjectiveToggle" type="button" aria-expanded="true" aria-label="Ringkaskan panel misi" title="Ringkaskan panel misi"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+      <h2 id="pqObjectiveTitle"></h2><p id="pqObjectiveText"></p><div class="pqObjectiveTip"><span>TIP 2.1</span><p id="pqObjectiveTip"></p></div>
+    </aside>
+  </div>
+  <div id="pqSkillDock"><button class="skillSlotBtn" data-skill-slot="0" data-pq-name="QuickFrame">Q</button><button class="skillSlotBtn" data-skill-slot="1" data-pq-name="Hammer">W</button><button class="skillSlotBtn" data-skill-slot="2" data-pq-name="Goober">E</button><button class="skillSlotBtn" data-skill-slot="3" data-pq-name="Shield">R</button><button id="pq10Potion" type="button" title="B · Buka beg | H · Minum ramuan nyawa">Beg · B</button><button id="pqMelee" aria-label="Space · Tembakan biru automatik">AUTO<br><span>Kunci</span></button></div><div id="pqChapter"></div><div id="toastStack"></div>
+  <div id="chargeMeter"><div id="chargeMeterTop"><span id="chargeName">TENAGA TERAS</span><span id="chargePercent">0%</span></div><div id="chargeTrack"><div id="chargeFill"></div></div></div><button id="interactBtn" type="button">Enter · Bercakap</button>
+  
+  <div id="startShade" class="shade generatedTitleScreen">
+    <div class="titleImageStage" role="dialog" aria-label="PhysiQuest RPG title screen">
+      <img id="pqTitleImage" src="assets/physiquest-title.png" width="1672" height="941" alt="PhysiQuest RPG — A Physics Adventure" decoding="sync" fetchpriority="high" draggable="false">
+      <button class="titleHotspot startHotspot" id="startBtn" type="button" aria-label="Start Game">Start Game</button>
+      <button class="titleHotspot howHotspot" id="howToPlayBtn" type="button" aria-label="How to Play">How to Play</button>
+      <button class="titleHotspot settingsHotspot" id="settingsBtn" type="button" aria-label="Settings">Settings</button>
+      <button class="titleHotspot exitHotspot" id="exitBtn" type="button" aria-label="Exit">Exit</button>
+      <div class="titleStartPulse">PRESS START</div>
+      <small id="pqBuildMark" hidden style="position:absolute;right:12px;bottom:10px;color:#ffe6b5;background:#0e1b25e6;border:1px solid #78674b;border-radius:4px;padding:4px 7px;font:12px system-ui,sans-serif;pointer-events:none">Desktop v3.1 · 27 animasi</small>
+      <div id="titleHelpShade" class="titleHelpShade" aria-hidden="true">
+        <div class="titleHelpBox" role="dialog" aria-label="How to Play instructions">
+<h1>CARA BERMAIN</h1><p>Pulihkan Teras Gerakan dan hentikan Velocitus.</p><div class="titleHelpGrid">
+<div class="titleHelpCard"><b>KLIK KIRI · GERAK</b><span>Klik kawasan boleh jalan; Aqil mencari laluan.</span></div>
+<div class="titleHelpCard"><b>SPACE · TEMBAKAN AUTO</b><span>Menembak musuh terdekat secara automatik selepas bertemu Orf. Tekan Space untuk hidup/matikan.</span></div>
+<div class="titleHelpCard"><b>Q · QUICKFRAME</b><span>Meluru selepas cabaran Agis.</span></div>
+<div class="titleHelpCard"><b>W · HAMMER OF RAPIDITY</b><span>Tempa dengan Orf di Aras 2.</span></div>
+<div class="titleHelpCard"><b>E · GOOBER SUMMON</b><span>Dibuka selepas jambatan.</span></div>
+<div class="titleHelpCard"><b>R · FORCE SHIELD</b><span>Perisai 40 kerosakan selama 3 saat.</span></div>
+<div class="titleHelpCard"><b>KLIK KANAN · PUKUL</b><span>Halakan tetikus dan pukul musuh dekat.</span></div>
+<div class="titleHelpCard"><b>ENTER · INTERAKSI</b><span>Bercakap dengan watak dan aktifkan penanda misi.</span></div>
+<div class="titleHelpCard"><b>PORTAL · MISI SETERUSNYA</b><span>Berjalan masuk selepas portal terbuka.</span></div><div class="titleHelpCard"><b>J · KETUK / TARIK</b><span>Hanya kekunci J. Klik dan kekunci lain tidak dikira.</span></div><div class="titleHelpCard"><b>H · RAMUAN NYAWA</b><span>Minum bekalan dalam beg.</span></div></div><p>Jawapan salah: −15 HP. Latihan Kin tiada penalti HP.</p>          <button class="titleHelpClose" id="titleHelpClose" type="button">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="stageShade"
+ class="shade"><div class="modal" id="stageBox"></div></div>
+  <div id="quizShade" class="shade">
+    <button id="quizPlayPrompt" type="button" class="pq-quiz-play-prompt" data-role="quiz-play-prompt" aria-controls="pqQuizSimulation" hidden>Tekan untuk play</button>
+    <div class="modal" id="quizBox"></div>
+  </div>
+  <div id="upgradeShade" class="shade"><div class="modal" id="upgradeBox"></div></div>
+  <div id="infoShade" class="shade"><div class="modal" id="infoBox"></div></div>
+  <div id="gameOverShade" class="shade"><div class="modal"><h1 style="color:var(--red)">Aqil tumbang!</h1><p>Tenaga Aqil habis. Jaga jarak dan guna Langkah Tangkas untuk mengelak musuh.</p><button class="modalBtn" id="retryBtn">Cuba lagi</button><button class="modalBtn danger" onclick="location.reload()">Mula semula</button></div></div>
+</div>
+
+  <script src="src/scene-scripts.js?v=top-down"></script>
+  <script src="src/quest-objectives.js?v=top-down"></script>
+  <script src="src/question-diagrams.js"></script>
+  <script src="src/physics-questions.js?v=velocitus-orbit"></script>
+  <script src="src/visual-settings.js?v=top-down"></script>
+  <script src="src/scene-effects.js"></script>
+  <script src="src/combat-content.js?v=palace-action"></script>
+  <script src="src/physiquest-tuning.js"></script>
+  <script src="src/graph-animations/graph-animations-data.js"></script>
+  <script src="src/graph-animations/graph-animations.js?v=quiz-play-prompt"></script>
+  <script src="src/graph-animations/motion-data.js?v=velocitus-orbit"></script>
+  <script src="src/graph-animations/motion-scenes.js?v=quiz-play-prompt"></script>
+  <script src="src/graph-animations/motion-animations.js?v=quiz-play-prompt"></script>
+  <script src="src/combat-visuals.js?v=velocitus-rebalance"></script>
+  <script src="src/aqil-skill-visuals.js?v=aqil-skills"></script>
+  <script src="src/aqil-thunder-fx.js?v=thunder-current"></script>
+  <script src="src/game-desktop-v3.js?v=quiz-pixel-frame"></script>
+  <script src="src/ion-cutscenes.js?v=ion-cutscenes-v1"></script>
+  <script src="src/tutorial-guide.js?v=linear-motion" defer></script>
+</body>
+</html>

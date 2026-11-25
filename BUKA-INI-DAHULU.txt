@@ -1,0 +1,36 @@
+PHYSIQUEST DESKTOP v3.1 ANIMASI LENGKAP
+
+Satu folder ini sudah mengandungi permainan, panduan bergambar,
+Bank Soalan 27 soalan dan Dev Mode. Semua fail telah digabungkan.
+
+1. Hentikan Live Server untuk versi lama, jika masih berjalan.
+2. Ekstrak ZIP. Dalam VS Code, buka folder PhysiQuest-Desktop-v3.1-Efek-Pertarungan.
+3. Klik kanan index.html dan pilih Open with Live Server.
+   Tulisan “Desktop v3.1 · 27 animasi” muncul di skrin utama selepas game dimuatkan.
+4. Klik How to Play untuk panduan bergambar, atau Start Game untuk bermain.
+5. Hampiri Agis di Hutan Skalar dan tekan Enter untuk mula berbual.
+   Tekan Enter atau klik Teruskan untuk membaca giliran seterusnya.
+
+BUKA PANDUAN SEMASA BERMAIN
+Tekan I untuk membuka Jurnal. Pilih “Cara bermain · panduan bergambar”.
+Tekan K semasa bergerak bebas untuk membuka Bank Soalan. Awak juga boleh
+membukanya melalui skrin utama atau Jurnal.
+Semua 27 soalan dalam Bank Soalan mempunyai animasi. Cari nombor soalan,
+misalnya Q9 atau Q208. Animasi juga dipaparkan apabila soalan itu muncul
+semasa bermain.
+
+DEV MODE
+Klik kanan dev.html > Open with Live Server, kemudian tekan F2.
+Untuk menyimpan perubahan Studio dalam projek, salin tetapan Studio ke
+src/physiquest-tuning.js. Dialog dan halangan daripada fail ini digunakan
+oleh index.html. Sela musuh dalam tetapan Studio hanya untuk ujian Dev Mode.
+
+SUNTING TERUS DALAM FOLDER INI
+- Panduan bergambar: src/tutorial-guide.js dan assets/tutorial.
+- Soalan: src/physics-questions.js, src/combat-content.js, src/questions-v31.js.
+- Dialog: src/scene-scripts.js atau tetapan Studio. Mulakan halaman dengan
+  nama watak, misalnya "Aqil: ", untuk menukar penutur dan potret.
+Tekan Ctrl+S dan muat semula tab Live Server jika perlu.
+
+Jika awak pernah sunting fail game sendiri, ekstrak versi ini ke folder
+berasingan supaya perubahan dalam versi lama kekal.
